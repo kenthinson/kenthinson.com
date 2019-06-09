@@ -1,6 +1,7 @@
 import 'package:flutter_web/cupertino.dart';
 
 import 'About.dart';
+import 'BlogPost.dart';
 import 'Contact.dart';
 import 'HomePage.dart';
 import 'Menu.dart';
@@ -48,6 +49,9 @@ class MyApp extends StatelessWidget {
                                           case '/skills':
                       return MaterialPageRoute(
                       builder: (_) => Skills(), settings: settings);
+                                          case '/blogpost':
+                      return MaterialPageRoute(
+                      builder: (_) => BlogPost(), settings: settings);
                   }
                 }
                 // routes: {

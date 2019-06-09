@@ -152,14 +152,15 @@ class Contact extends StatelessWidget {
   }
 }
 
+
 class CustomTextField extends StatefulWidget {
-  CustomTextField(String label, bool expand, String valadate(String text))
+  CustomTextField(String label, bool expand, String validate(String text))
       : this.expand = expand,
-        this.valadate = valadate,
+        this.validate = validate,
         this.label = label;
   final label;
   final expand;
-  final valadate;
+  final validate;
 
   @override
   _CustomTextFieldState createState() => _CustomTextFieldState();
@@ -192,7 +193,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ),
         TextFormField(
           validator: (text) {
-            final val = widget.valadate(text);
+            final val = widget.validate(text);
             print(val);
             if (val == null) {
               setState(() {
@@ -240,6 +241,5 @@ class WordCount {
       }
       return wordCounts;
     });
-    // ugly dartfmt tool
   }
 }

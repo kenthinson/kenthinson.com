@@ -1,3 +1,4 @@
+import 'package:flutter_web.examples.custom_fonts/globals.dart';
 import 'package:flutter_web/material.dart';
 import 'package:flutter_web/widgets.dart';
 
@@ -43,7 +44,7 @@ class BlogPost extends StatelessWidget {
                           bottom: 0,
                           top: 20,
                           child: Container(
-                            color: Color.fromARGB(255, 51, 60, 71),
+                            decoration: greyBoxDec,
                             child: Padding(
                               padding: const EdgeInsets.all(25.0),
                               child: Container(
@@ -81,7 +82,7 @@ class BlogPost extends StatelessWidget {
                                       child:
                                       Text(
                                 " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam placerat nisi sit amet turpis finibus, nec ornare tellus venenatis. Cras sit amet nisl sem. Nullam vel finibus turpis. Praesent bibendum odio lectus, eget scelerisque nisi tincidunt quis. Ut facilisis magna ut imperdiet aliquet. Proin consequat massa sollicitudin est tincidunt sollicitudin. Vestibulum id imperdiet tortor. Nunc accumsan tellus ornare metus bibendum, ut consequat libero feugiat. Sed non risus eleifend, imperdiet turpis eu, suscipit felis. Cras a lorem rutrum, suscipit velit vitae, dignissim nisl. Suspendisse potenti. Suspendisse varius ornare mauris, ut ullamcorper enim egestas vitae. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce ac venenatis erat.",
-                                style: TextStyle(color: Colors.white, fontSize: 16, fontFamily: 'OverpassMono'),
+                                style: whiteTextStyle,
                               ),
                                       )
                                   ],
@@ -94,15 +95,12 @@ class BlogPost extends StatelessWidget {
                             left: 20,
                             height: 40,
                             child: Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(),
-                                  color: Color.fromARGB(255, 51, 60, 71)),
+                              decoration: greyBoxDec,
                               child: Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: Text(
                                   "Armory3D",
-                                  style: TextStyle(
-                                      fontSize: 18, fontFamily: 'OverpassMono'),
+                                  style: whiteTextStyle,
                                 ),
                               ),
                             ))

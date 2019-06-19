@@ -25,61 +25,57 @@ class MyApp extends StatelessWidget {
           textDirection: TextDirection.ltr,
           children: <Widget>[
             Menu(true),
-            Expanded(child: Container(color: Colors.yellow,)),
-            Expanded(child: Container(color: Colors.teal,))
+            mainScreen()
           ],
         );
       }else if(constraints.maxWidth > 500){
         return Column(children: <Widget>[
           Menu(false),
-          Expanded(child: Container(color: Colors.teal,)),
+          mainScreen()
         ],textDirection: TextDirection.ltr,);
       }else{
         return Column(children: <Widget>[
-          Expanded(child: Container(color: Colors.teal,)),
+          mainScreen(),
           Menu(false),
         ],textDirection: TextDirection.ltr,);
       }
     },
 );
-        // child: Row(
-        //   textDirection: TextDirection.ltr,
-        //   children: <Widget>[
-        //     Menu(),
-        //     Expanded(
-        //                   child: MaterialApp(
-        //         title: 'Flutter Demo',
-        //         theme: ThemeData(
-        //           primarySwatch: Colors.blue,
-        //           primaryColor: Color.fromARGB(255, 102, 252, 241),
-        //         ),
-        //         initialRoute: '/',
-        //         navigatorKey: navigatorKey,
-        //         onGenerateRoute: (RouteSettings settings){
-        //           switch (settings.name){
-        //             case '/':
-        //               return MaterialPageRoute(
-        //               builder: (_) => HomePage(), settings: settings);
-        //             case '/youtube':
-        //               return MaterialPageRoute(
-        //               builder: (_) => YouTube(), settings: settings);
-        //             case '/contact':
-        //               return MaterialPageRoute(
-        //               builder: (_) => Contact(), settings: settings);
-        //             case '/about':
-        //               return MaterialPageRoute(
-        //               builder: (_) => AboutMe(), settings: settings);
-        //                                   case '/skills':
-        //               return MaterialPageRoute(
-        //               builder: (_) => Skills(), settings: settings);
-        //                                   case '/blogpost':
-        //               return MaterialPageRoute(
-        //               builder: (_) => BlogPost(), settings: settings);
-        //           }
-        //         }
-        //       ),
-        //     ),
-        //   ],
-        // ),
   }
+}
+
+mainScreen(){
+  return       Expanded(
+                          child: MaterialApp(
+                title: 'Flutter Demo',
+                theme: ThemeData(
+                  primarySwatch: Colors.blue,
+                  primaryColor: Color.fromARGB(255, 102, 252, 241),
+                ),
+                initialRoute: '/',
+                navigatorKey: navigatorKey,
+                onGenerateRoute: (RouteSettings settings){
+                  switch (settings.name){
+                    case '/':
+                      return MaterialPageRoute(
+                      builder: (_) => HomePage(), settings: settings);
+                    case '/youtube':
+                      return MaterialPageRoute(
+                      builder: (_) => YouTube(), settings: settings);
+                    case '/contact':
+                      return MaterialPageRoute(
+                      builder: (_) => Contact(), settings: settings);
+                    case '/about':
+                      return MaterialPageRoute(
+                      builder: (_) => AboutMe(), settings: settings);
+                                          case '/skills':
+                      return MaterialPageRoute(
+                      builder: (_) => Skills(), settings: settings);
+                                          case '/blogpost':
+                      return MaterialPageRoute(
+                      builder: (_) => BlogPost(), settings: settings);
+                  }
+                }
+              ),
+            );
 }

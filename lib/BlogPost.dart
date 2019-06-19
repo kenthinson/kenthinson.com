@@ -1,6 +1,6 @@
-import 'package:flutter_web.examples.custom_fonts/globals.dart';
 import 'package:flutter_web/material.dart';
 import 'package:flutter_web/widgets.dart';
+import 'globals.dart';
 
 import 'Menu.dart';
 

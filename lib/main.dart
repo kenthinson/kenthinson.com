@@ -29,9 +29,15 @@ class MyApp extends StatelessWidget {
             Expanded(child: Container(color: Colors.teal,))
           ],
         );
+      }else if(constraints.maxWidth > 500){
+        return Column(children: <Widget>[
+          Menu(false),
+          Expanded(child: Container(color: Colors.teal,)),
+        ],textDirection: TextDirection.ltr,);
       }else{
-        return Stack(children: <Widget>[
-          Menu(false)
+        return Column(children: <Widget>[
+          Expanded(child: Container(color: Colors.teal,)),
+          Menu(false),
         ],textDirection: TextDirection.ltr,);
       }
     },

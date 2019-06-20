@@ -6,12 +6,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
       return Scaffold(
               body: Container(
+                constraints: BoxConstraints(minWidth: 100000000),
           color: Color.fromARGB(2255, 21, 30, 41),
-                child: Row(
-            children: <Widget>[
-              Expanded(
-                child: Container(
-                  child: FittedBox(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.start,children: <Widget>[
+            Container(
+              constraints: BoxConstraints(minWidth: 700,minHeight: 400),
+              child: FittedBox(
                       child: Padding(
                           padding: EdgeInsets.all(16.0),
                           child: Column(
@@ -40,15 +40,9 @@ class HomePage extends StatelessWidget {
                                 style: TextStyle(color: Color.fromARGB(255, 102, 252, 241),fontFamily: 'OverpassMono'),
                               ),
                             ],
-                          ))),
-                ),
-              ),
-              Expanded(
-                child: Container(//color: Colors.green
-                    ),
-              ),
-            ],
-    ),
+                          )))
+            )
+          ],),
         ),
       );
   }

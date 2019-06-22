@@ -6,13 +6,17 @@ Scaffold pageTemplate(String heading, Widget body) {
     List<Widget> newWidgets = [];
     if (heading != '') {
       newWidgets.add(Container(
-        constraints: BoxConstraints(minWidth: 500),
+        constraints: BoxConstraints(minWidth: 500, maxHeight: 100),
         child: FittedBox(
-            child: Text(
+        alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 2.0),
+              child: Text(
           heading,
           style: TextStyle(
-              color: Color.fromARGB(255, 102, 252, 241), fontFamily: 'Monoton'),
-        )),
+                color: Color.fromARGB(255, 102, 252, 241), fontFamily: 'Monoton'),
+        ),
+            )),
       ));
     }
     newWidgets.add(Container(

@@ -1,114 +1,85 @@
-
+import 'PageTemplate.dart';
 import 'package:flutter_web/material.dart';
 
 class Contact extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Form(
-        autovalidate: true,
-              child: Container(
-          color: Color.fromARGB(2255, 21, 30, 41),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return pageTemplate(
+        'Contact',
+        Form(
+          autovalidate: true,
+          child: Column(
             children: <Widget>[
               Container(
-                constraints: BoxConstraints(minWidth: 20),
+                constraints: BoxConstraints(maxWidth: 800),
+                child: buildNameAndEmailLayout(),
               ),
-              Expanded(
-                  child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      constraints: BoxConstraints(minWidth: 500),
-                      child: FittedBox(
-                          child: Text(
-                        'Contact',
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 102, 252, 241),
-                            fontFamily: 'Monoton'),
-                      )),
+              SizedBox(
+                height: 15,
+              ),
+              CustomTextField("Subject", false, (text) {
+                if (text == '') {
+                  return 'Required';
+                } else if (WordCount().countWords(text).length < 3) {
+                  return 'Needs more detail';
+                } else {
+                  return null;
+                }
+              }),
+              SizedBox(
+                height: 15,
+              ),
+              CustomTextField('Message', true, (text) {
+                if (text == '') {
+                  return 'Required';
+                } else if (WordCount().countWords(text).length < 5) {
+                  return 'More detail please';
+                } else {
+                  return null;
+                }
+              }),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  OutlineButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0)),
+                    borderSide: BorderSide(
+                        width: 5.0, color: Color.fromARGB(255, 102, 252, 241)),
+                    onPressed: () {},
+                    child: Text(
+                      'Send',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 102, 252, 241),
+                          fontFamily: 'OverpassMono'),
                     ),
-                    Container(constraints: BoxConstraints(maxWidth: 800),child: buildNameAndEmailLayout(),),
-                    SizedBox(height: 15,),
-                    Container(constraints: BoxConstraints(maxWidth: 800),child: CustomTextField("Subject", false, (text) {
-                                                                      if (text == '') {
-                                            return 'Required';
-                                          } else if(WordCount().countWords(text).length < 3){
-                                            return 'Needs more detail';
-                                          }else{
-                                            return null;
-                                          }
-                                        }),),
-                                        SizedBox(height: 14),
-                                        Container(
-                                          constraints: BoxConstraints(maxWidth: 800),
-                                          child: CustomTextField('Message', true, (text) {
-                                            if(text == ''){
-                                              return 'Required';
-                                            }else if(WordCount().countWords(text).length < 5){
-                                              return 'More detail please';
-                                            }else{
-                                              return null;
-                                            }
-                                          }),
-                                        ),
-                                        Container(
-                                          constraints: BoxConstraints(maxWidth: 800),
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.end,
-                                            children: <Widget>[
-                                              OutlineButton(
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius: BorderRadius.circular(5.0)),
-                                                      borderSide: BorderSide(
-                                                          width: 5.0,
-                                                          color:
-                                                              Color.fromARGB(255, 102, 252, 241)),
-                                                      onPressed: () {},
-                                                      child: Text(
-                                                        'Send',
-                                                        style: TextStyle(
-                                                            color:
-                                                                Color.fromARGB(255, 102, 252, 241),
-                                                            fontFamily: 'OverpassMono'),
-                                                      ),
-                                                    ),
-                                            ],
-                                          ),
-                                        ),
-                  ],
-                ),
-              )),
-              Container(
-                constraints: BoxConstraints(minWidth: 20),
+                  ),
+                ],
               ),
             ],
           ),
-        ),
-      ),
-    );
+        ));
   }
 
   buildNameAndEmailLayout() {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth < 300) {
-          return Column(children: <Widget>[
-            nameTextField(),
-            SizedBox(height: 14,),
-            emailTextField()
-          ],);
+        if (constraints.maxWidth < 350) {
+          return Column(
+            children: <Widget>[
+              nameTextField(),
+              SizedBox(
+                height: 14,
+              ),
+              emailTextField()
+            ],
+          );
         } else {
           return Row(
             children: <Widget>[
-              Expanded(
-                  child: nameTextField()),
+              Expanded(child: nameTextField()),
               SizedBox(width: 14),
-              Expanded(
-                  child: emailTextField())
+              Expanded(child: emailTextField())
             ],
           );
         }
@@ -118,30 +89,30 @@ class Contact extends StatelessWidget {
 
   CustomTextField emailTextField() {
     return CustomTextField('Email', false, (text) {
-              String p =
-                  r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+      String p =
+          r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
-              RegExp regExp = new RegExp(p);
-              if (regExp.hasMatch(text)) {
-                return null;
-              } else if (text == "") {
-                return "Required";
-              } else {
-                return "Invalid Email";
-              }
-            });
+      RegExp regExp = new RegExp(p);
+      if (regExp.hasMatch(text)) {
+        return null;
+      } else if (text == "") {
+        return "Required";
+      } else {
+        return "Invalid Email";
+      }
+    });
   }
 
   CustomTextField nameTextField() {
     return CustomTextField("Name", false, (text) {
-              if (text == '') {
-                return 'Required';
-              } else if (WordCount().countWords(text).length < 2) {
-                return 'First & Last. Ex: Jhonny Appleseed';
-              } else {
-                return null;
-              }
-            });
+      if (text == '') {
+        return 'Required';
+      } else if (WordCount().countWords(text).length < 2) {
+        return 'First & Last. Ex: Jhonny Appleseed';
+      } else {
+        return null;
+      }
+    });
   }
 }
 
@@ -163,15 +134,23 @@ class _CustomTextFieldState extends State<CustomTextField> {
   var errorFontSize;
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints){
-      if(constraints.maxWidth < 300){
-        errorFontSize = 10.0;
-        return Container(constraints: BoxConstraints(maxHeight: 100),child: innerWidget(),);
-      }else{
-        errorFontSize = 16.0;
-        return Container(constraints: BoxConstraints(maxHeight: 300),child: innerWidget(),);
-      }
-    },);
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth < 300) {
+          errorFontSize = 10.0;
+          return Container(
+            constraints: BoxConstraints(maxHeight: 100),
+            child: innerWidget(),
+          );
+        } else {
+          errorFontSize = 16.0;
+          return Container(
+            constraints: BoxConstraints(maxHeight: 300),
+            child: innerWidget(),
+          );
+        }
+      },
+    );
   }
 
   Widget innerWidget() {

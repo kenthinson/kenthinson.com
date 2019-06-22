@@ -16,6 +16,8 @@ import 'package:flutter_web/material.dart';
               constraints: BoxConstraints(
                   minHeight: 400, minWidth: 100, maxWidth: 700),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
                     constraints: BoxConstraints(minWidth: 500),
